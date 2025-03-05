@@ -6,9 +6,7 @@
     <h2 class="text-center mb-4">Explore Our Top Cars</h2>
 
     <!-- Car Categories -->
-    {% for category, cars in cars_by_category.items %}
       <h2 class="mt-4">{{ category }} Cars</h2>
-
       <div class="row">
         {% for car in cars %}
           <div class="col-md-4">
@@ -26,11 +24,6 @@
           </div>
         {% endfor %}
       </div>
-
       <hr>
-      <div class="text-end">
-        <a href="{% url 'category-list' category %}" class="btn btn-info mb-3" >See More</a>
-      </div>
-    {% endfor %}
   </div>
 {% endblock %}

@@ -21,8 +21,19 @@ class CarsDetailView(DetailView):
     template_name = 'cars/cars_detail.html'
 
 
-class CategoryDetailView(DetailView):
+class CategoryListView(ListView):
     model = Cars
-    template_name = 'cars/category_detail.html'
+    template_name = 'cars/category_list.html'
+    context_object_name = 'cars'
 
+    def get_queryset(self):
+       category = self.kwargs.get('category')
 
+       return Cars.objects.filter(category = category)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['category'] = self.kwargs.get('category')
+
+        return context
