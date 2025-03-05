@@ -6,35 +6,31 @@
     <h2 class="text-center mb-4">Explore Our Top Cars</h2>
 
     <!-- Car Categories -->
-    <div class="row">
-        {% for object in cars %}
-          <h2>{{ object.category }}</h2>
-          <!-- Category 1 -->
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card">
-                <img src="{{ object.image.url }}" class="card-img-top" />
-                <div class="card-body">
-                  <h5 class="card-title">{{ object.title }}</h5>
-                  <p class="card-text">
-                    <strong>Company:</strong> {{ object.company }}
-                  </p>
-                  <p class="card-text">
-                    <strong>Category:</strong> {{ object.category }}
-                  </p>
-                  <p class="card-text">
-                    <strong>Launch Date:</strong> {{ object.launch_date }}
-                  </p>
-                  <p class="card-text">
-                    <strong>Price($):</strong> {{ object.price }}
-                  </p>
-                </div>
+    {% for category, cars in cars_by_category.items %}
+      <h2 class="mt-4">{{ category }} Cars</h2>
+
+      <div class="row">
+        {% for car in cars %}
+          <div class="col-md-4">
+            <div class="card">
+              <img src="{{ car.image.url }}" class="card-img-top" />
+              <div class="card-body">
+                <h5 class="card-title">{{ car.title }}</h5>
+                <p class="card-text"><strong>Company:</strong> {{ car.company }}</p>
+                <p class="card-text"><strong>Category:</strong> {{ car.category }}</p>
+                <p class="card-text"><strong>Launch Date:</strong> {{ car.launch_date }}</p>
+                <p class="card-text"><strong>Price($):</strong> {{ car.price }}</p>
+                <a href="#" class="btn btn-outline-primary btn-sm">Details</a>
               </div>
             </div>
           </div>
-
-          <hr>
         {% endfor %}
-    </div>
+      </div>
+
+      <hr>
+      <div class="text-end">
+        <a href="#" class="btn btn-info mb-3" >See More</a>
+      </div>
+    {% endfor %}
   </div>
 {% endblock %}
