@@ -17,5 +17,12 @@ class CarsListView(ListView):
 
 
 class CarsDetailView(DetailView):
-    pass
+    model = Cars
+    template_name = 'cars/cars_detail.html'
+
+
+class CategoryDetailView(DetailView):
+    model = Cars
+    template_name = 'cars/category_detail.html'
+
 

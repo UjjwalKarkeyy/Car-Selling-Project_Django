@@ -20,7 +20,7 @@
                 <p class="card-text"><strong>Category:</strong> {{ car.category }}</p>
                 <p class="card-text"><strong>Launch Date:</strong> {{ car.launch_date }}</p>
                 <p class="card-text"><strong>Price($):</strong> {{ car.price }}</p>
-                <a href="#" class="btn btn-outline-primary btn-sm">Details</a>
+                <a href="{% url 'cars-detail' car.pk %}" class="btn btn-outline-primary btn-sm">Details</a>
               </div>
             </div>
           </div>
