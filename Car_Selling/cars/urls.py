@@ -3,5 +3,5 @@ from .views import CarsListView, CarsDetailView
 
 
 urlpatterns = [
-    path('', CarsListView.as_view(), name='cars-home'),
+    path('', CarsListView.as_view(), name='cars-list'),
 ]
