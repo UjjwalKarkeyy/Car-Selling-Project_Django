@@ -35,7 +35,8 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'cars.apps.CarsConfig',
     'users.apps.UsersConfig',
-    'django.contrib.admin',
+    # 'django.contrib.admin',
+    'hide_admin.apps.HideAdminConfig', # <--- Add this line instead of the commented one
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -135,3 +136,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'cars-list'   
+
+LOGIN_URL = 'login'
