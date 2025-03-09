@@ -3,6 +3,7 @@ from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views as auth_views
 
 def logout_view(request):
     logout(request)
@@ -53,3 +54,36 @@ def profile_edit_view(request):
             }
 
         return render(request, 'users/profile_edit.html', context)
+
+
+class UpdatedPasswordResetView(auth_views.PasswordResetView):
+    def form_valid(self, form):
+        
+        self.request.session['password_reset_initiated'] = True
+        return super().form_valid(form)
+
+class UpdatedPasswordResetDoneView(auth_views.PasswordResetDoneView):
+    def dispatch(self, request, *args, **kwargs):
+
+        if not request.session.get('password_reset_initiated'):
+            return redirect('password_reset')
+        
+        return super().dispatch(request, *args, **kwargs)
+    
+class UpdatedPasswordResetConfirmView(auth_views.PasswordResetConfirmView):
+    def dispatch(self, request, *args, **kwargs):
+
+        if not request.session.get('password_reset_initiated'):
+            return redirect('password_reset')
+
+        return super().dispatch(request, *args, **kwargs)
+    
+class UpdatedPasswordResetCompleteView(auth_views.PasswordResetCompleteView):
+    def dispatch(self, request, *args, **kwargs):
+
+        if not request.session.get('password_reset_initiated'):
+            return redirect('password_reset')
+
+        return super().dispatch(request, *args, **kwargs)
+    
+    

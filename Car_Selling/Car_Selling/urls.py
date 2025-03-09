@@ -19,12 +19,20 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from users.views import logout_view, register_view, profile_view, profile_edit_view
+from users.views import (logout_view, 
+                         register_view, profile_view, 
+                         profile_edit_view, UpdatedPasswordResetView,
+                         UpdatedPasswordResetDoneView, UpdatedPasswordResetConfirmView,
+                         UpdatedPasswordResetCompleteView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('cars.urls')),
     path('login/', auth_views.LoginView.as_view(template_name = 'users/login.html'), name= 'login'),
+    path('password_reset/', UpdatedPasswordResetView.as_view(template_name = 'users/password_reset.html'), name= 'password_reset'),
+    path('password_reset/done/', UpdatedPasswordResetDoneView.as_view(template_name = 'users/password_reset_done.html'), name= 'password_reset_done'),
+    path('password_reset_confirm/<uidb64>/<token>/', UpdatedPasswordResetConfirmView.as_view(template_name = 'users/password_reset_confirm.html'), name= 'password_reset_confirm'),
+    path('password_reset/complete/', UpdatedPasswordResetCompleteView.as_view(template_name = 'users/password_reset_complete.html'), name= 'password_reset_complete'),
     path('logout/', logout_view, name='logout'),
     path('register/', register_view, name='register'),
     path('profile/', profile_view, name='profile'),
