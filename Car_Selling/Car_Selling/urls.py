@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from users.views import logout_view, register_view, profile_view
+from users.views import logout_view, register_view, profile_view, profile_edit_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,8 +28,8 @@ urlpatterns = [
     path('logout/', logout_view, name='logout'),
     path('register/', register_view, name='register'),
     path('profile/', profile_view, name='profile'),
+    path('profile/edit', profile_edit_view, name='profile-edit'),
 ]
-
 
 if settings.DEBUG:
 

@@ -1,36 +1,45 @@
 {% extends 'cars/base.html' %}
+{% load static %}
 
 {% block content %}
-  <!-- Main Content -->
-  <div class="container mt-4">
-    <h2 class="text-center mb-4">Explore Our Top Cars</h2>
+<link rel="stylesheet" href="{% static 'cars/cars_list.css'%}">
+<!-- Main Content -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4 text-primary fw-bold">Explore Our Top Cars</h2>
 
     <!-- Car Categories -->
     {% for category, cars in cars_by_category.items %}
-      <h2 class="mt-4">{{ category }} Cars</h2>
+    <h3 class="mt-5 text-black fw-semibold">{{ category }} Cars</h3>
 
-      <div class="row">
+    <div class="row">
         {% for car in cars %}
-          <div class="col-md-4">
-            <div class="card">
-              <img src="{{ car.image.url }}" class="card-img-top" />
-              <div class="card-body">
-                <h5 class="card-title">{{ car.title }}</h5>
-                <p class="card-text"><strong>Company:</strong> {{ car.company }}</p>
-                <p class="card-text"><strong>Category:</strong> {{ car.category }}</p>
-                <p class="card-text"><strong>Launch Date:</strong> {{ car.launch_date }}</p>
-                <p class="card-text"><strong>Price($):</strong> {{ car.price }}</p>
-                <a href="{% url 'cars-detail' car.pk %}" class="btn btn-outline-primary btn-sm">Details</a>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-lg border-0 rounded-lg overflow-hidden car-card">
+                <!-- Car Image -->
+                <img src="{{ car.image.url }}" class="card-img-top car-image" alt="{{ car.title }}">
 
-      <hr>
-      <div class="text-end">
-        <a href="{% url 'category-list' category %}" class="btn btn-info mb-3" >See More</a>
-      </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <h5 class="card-title fw-bold">{{ car.title }}</h5>
+                    <p class="card-text"><strong>Company:</strong> {{ car.company }}</p>
+                    <p class="card-text"><strong>Category:</strong> {{ car.category }}</p>
+                    <p class="card-text"><strong>Launch Date:</strong> {{ car.launch_date }}</p>
+                    <p class="card-text"><strong>Price($):</strong> <span class="text-success fw-bold">${{ car.price }}</span></p>
+                    
+                    <!-- Details Button -->
+                    <a href="{% url 'cars-detail' car.pk %}" class="btn btn-primary btn-sm w-100">🔍 View Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- See More Button -->
+    <div class="text-end">
+        <a href="{% url 'category-list' category %}" class="btn btn-info mt-3 mb-4">📌 See More</a>
+    </div>
+    <hr style="border: 1px solid black;">
     {% endfor %}
-  </div>
+</div>
+
 {% endblock %}

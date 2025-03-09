@@ -1,0 +1,10 @@
+.forgot-password-link {
+    color: #007bff; /* Default blue color */
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.forgot-password-link:hover {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: underline;
+}

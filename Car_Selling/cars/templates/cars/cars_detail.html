@@ -1,24 +1,38 @@
 {% extends 'cars/base.html' %}
+{% load static %}
 
 {% block content %}
-  <!-- Main Content -->
-  <div class="container mt-4">
-    <!-- Car Categories -->
-      <h2 class="mt-4">{{ object.title }} Detail</h2>
-      <div class="row">
-          <div class="col-md-4">
-            <div class="card">
-              <img src="{{ object.image.url }}" class="card-img-top" />
-              <div class="card-body">
-                <h5 class="card-title">{{ object.title }}</h5>
-                <p class="card-text"><strong>Company:</strong> {{ object.company }}</p>
-                <p class="card-text"><strong>Category:</strong> {{ object.category }}</p>
-                <p class="card-text"><strong>Launch Date:</strong> {{ object.launch_date }}</p>
-                <p class="card-text"><strong>Price($):</strong> {{ object.price }}</p>
-              </div>
+<link rel="stylesheet" href="{% static 'cars/cars_detail.css' %}">
+<!-- Main Content -->
+<div class="container mt-5">
+    <!-- Page Title -->
+    <h2 class="text-center text-light fw-bold">{{ object.title }} - Car Details</h2>
+
+    <!-- Car Details Section -->
+    <div class="row mt-4 justify-content-center">
+        <div class="col-lg-10">
+            <div class="car-detail-card shadow-lg">
+                <div class="row g-0">
+                    <!-- Car Image -->
+                    <div class="col-md-6">
+                        <img src="{{ object.image.url }}" class="img-fluid car-detail-img" alt="{{ object.title }}">
+                    </div>
+
+                    <!-- Car Information -->
+                    <div class="col-md-6 p-4 d-flex flex-column justify-content-center">
+                        <h3 class="fw-bold text-light">{{ object.title }}</h3>
+                        <p class="car-detail-text"><span class="detail-label">Company:</span> {{ object.company }}</p>
+                        <p class="car-detail-text"><span class="detail-label">Category:</span> {{ object.category }}</p>
+                        <p class="car-detail-text"><span class="detail-label">Launch Date:</span> {{ object.launch_date }}</p>
+                        <p class="car-detail-text"><span class="detail-label">Price ($):</span> <span class="text-gold fw-bold">${{ object.price }}</span></p>
+                    </div>
+                </div>
             </div>
-          </div>
-      </div>
-      <hr>
-  </div>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="styled-hr">
+</div>
+
 {% endblock %}

@@ -1,0 +1,60 @@
+/* Background Styling */
+body {
+    background-color: #ffffff; /* Deep dark theme */
+    font-family: 'Poppins', serif;
+}
+
+/* Luxury Gold Accent */
+.text-gold {
+    color: #d4af37; /* Gold */
+}
+
+/* Premium Card Styling */
+.luxury-card {
+    background: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.luxury-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+}
+
+/* Car Image Styling */
+.luxury-image {
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 2px solid #d4af37;
+}
+
+/* Button Styling */
+.btn-gold {
+    background-color: #d4af37;
+    color: black;
+    font-weight: bold;
+    border-radius: 30px;
+    padding: 8px 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-gold:hover {
+    background-color: #b89530;
+    color: white;
+}
+
+.btn-outline-gold {
+    border: 2px solid #d4af37;
+    color: #d4af37;
+    font-weight: bold;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-outline-gold:hover {
+    background-color: #d4af37;
+    color: black;
+}

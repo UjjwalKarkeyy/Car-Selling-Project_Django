@@ -1,29 +1,42 @@
 {% extends 'cars/base.html' %}
-
+{% load static %}
 {% block content %}
-  <!-- Main Content -->
-  <div class="container mt-4">
-    <h2 class="text-center mb-4">Explore Our Top Cars</h2>
 
-    <!-- Car Categories -->
-      <h2 class="mt-4">{{ category }} Cars</h2>
-      <div class="row">
+<link rel="stylesheet" href="{% static 'cars/category_list.css' %}">
+<!-- Main Content -->
+<div class="container mt-5">
+    <h2 class="text-center text-light fw-bold">{{ category }} Cars</h2>
+
+    <!-- Responsive Car Grid -->
+    <div class="row mt-4">
         {% for car in cars %}
-          <div class="col-md-4">
-            <div class="card">
-              <img src="{{ car.image.url }}" class="card-img-top" />
-              <div class="card-body">
-                <h5 class="card-title">{{ car.title }}</h5>
-                <p class="card-text"><strong>Company:</strong> {{ car.company }}</p>
-                <p class="card-text"><strong>Category:</strong> {{ car.category }}</p>
-                <p class="card-text"><strong>Launch Date:</strong> {{ car.launch_date }}</p>
-                <p class="card-text"><strong>Price($):</strong> {{ car.price }}</p>
-                <a href="{% url 'cars-detail' car.pk %}" class="btn btn-outline-primary btn-sm">Details</a>
-              </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card car-card">
+                <!-- Car Image -->
+                <img src="{{ car.image.url }}" class="card-img-top car-image" alt="{{ car.title }}">
+
+                <!-- Card Body -->
+                <div class="card-body text-white">
+                    <h5 class="card-title">{{ car.title }}</h5>
+                    <p class="car-detail-text"><span class="detail-label">Company:</span> {{ car.company }}</p>
+                    <p class="car-detail-text"><span class="detail-label">Category:</span> {{ car.category }}</p>
+                    <p class="car-detail-text"><span class="detail-label">Launch Date:</span> {{ car.launch_date }}</p>
+                    <p class="car-detail-text"><span class="detail-label">Price ($):</span> <span class="text-gold fw-bold">${{ car.price }}</span></p>
+                    
+                    <!-- Details Button -->
+                    <a href="{% url 'cars-detail' car.pk %}" class="btn btn-outline-info w-100">View Details</a>
+                </div>
             </div>
-          </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <p class="text-center text-light">No cars available in this category.</p>
+        </div>
         {% endfor %}
-      </div>
-      <hr>
-  </div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="styled-hr">
+</div>
+
 {% endblock %}

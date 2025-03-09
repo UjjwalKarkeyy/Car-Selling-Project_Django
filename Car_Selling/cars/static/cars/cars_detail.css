@@ -1,0 +1,51 @@
+/* Background */
+body {
+    background-color: #0a192f; /* Deep navy blue */
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Car Detail Card */
+.car-detail-card {
+    background: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.car-detail-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 174, 255, 0.3);
+}
+
+/* Car Image Styling */
+.car-detail-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-right: 5px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Car Text */
+.car-detail-text {
+    font-size: 1.1rem;
+    color: #dce2f0;
+    margin-bottom: 8px;
+}
+
+.detail-label {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.text-gold {
+    color: #ffd700; /* Gold for price */
+}
+
+/* Styled Divider */
+.styled-hr {
+    width: 60%;
+    margin: 30px auto;
+    border: 1px solid #007bff;
+    opacity: 0.6;
+}
