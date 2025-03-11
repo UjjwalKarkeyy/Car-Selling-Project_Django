@@ -2,6 +2,8 @@
 {% load static %}
 {% block content %}
   <link rel="stylesheet" href="{% static 'cars/category_list.css' %}" />
+  <link rel="stylesheet" href="{% static 'addtocart.css' %}">
+
   <!-- Main Content -->
   <div class="container mt-5">
     <h2 class="text-center text-light fw-bold">{{ category }} Cars</h2>
@@ -31,7 +33,7 @@
               </p>
               <!-- Details Button -->
               <div class="d-grid gap-2">
-                <a href="{% url 'cart-add' car.id %}" class="btn btn-primary btn-sm w-100" data-car-id="{{ car.id }}">Add to Cart</a>
+                <button class="btn btn-primary btn-sm w-100 add-to-cart" data-car-id="{{ car.id }}">🛒 Add to Cart</button>
                 <a href="{% url 'cars-detail' car.pk %}" class="btn btn-outline-primary btn-sm w-100">🔍 View Details</a>
               </div>
             </div>
@@ -47,4 +49,6 @@
     <!-- Divider -->
     <hr class="styled-hr" />
   </div>
+  <script src="{% static 'js/add_to_cart.js' %}" defer></script>
+
 {% endblock %}
