@@ -27,7 +27,7 @@
 .warning {
     background-color: #ffc107; /* Yellow */
     color: #000000;
-}
+}   
 
 .error {
     background-color: #dc3545; /* Red */
@@ -36,6 +36,6 @@
 
 .info {
     background-color: #17a2b8; /* Blue */
-    color: #e4f30f;
+    color: #f5c61a;
 }
 

@@ -16,6 +16,7 @@ def add_to_cart(request, pk):
 
     item, created = Cart.objects.get_or_create(user = request.user, car = car)
 
-    return JsonResponse({
-        'message' : 'Item added!' if created else 'Item already in cart!' 
-        })
+    if created:
+        return JsonResponse({"message": "Item added to cart!", "status": "success"})
+    else:
+        return JsonResponse({"message": "Item already in cart!", "status": "warning"})
