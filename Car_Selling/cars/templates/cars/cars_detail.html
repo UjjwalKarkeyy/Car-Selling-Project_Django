@@ -6,7 +6,7 @@
   <!-- Main Content -->
   <div class="container mt-5">
     <!-- Page Title -->
-    <h2 class="text-center text-light fw-bold">{{ object.title }} - Car Details</h2>
+    <h2 class="text-center text-light fw-bold">{{ car.title }} - Car Details</h2>
 
     <!-- Car Details Section -->
     <div class="row mt-4 justify-content-center">
@@ -15,27 +15,26 @@
           <div class="row g-0">
             <!-- Car Image -->
             <div class="col-md-6">
-              <img src="{{ object.image.url }}" class="img-fluid car-detail-img" alt="{{ object.title }}" />
+              <img src="{{ car.image.url }}" class="img-fluid car-detail-img" alt="{{ car.title }}" />
             </div>
 
             <!-- Car Information -->
             <div class="col-md-6 p-4 d-flex flex-column justify-content-center">
-              <h3 class="fw-bold text-light">{{ object.title }}</h3>
+              <h3 class="fw-bold text-light">{{ car.title }}</h3>
               <p class="car-detail-text">
-                <span class="detail-label">Company:</span> {{ object.company }}
+                <span class="detail-label">Company:</span> {{ car.company }}
               </p>
               <p class="car-detail-text">
-                <span class="detail-label">Category:</span> {{ object.category }}
+                <span class="detail-label">Category:</span> {{ car.category }}
               </p>
               <p class="car-detail-text">
-                <span class="detail-label">Launch Date:</span> {{ object.launch_date }}
+                <span class="detail-label">Launch Date:</span> {{ car.launch_date }}
               </p>
               <p class="car-detail-text">
-                <span class="detail-label">Price ($):</span> <span class="text-gold fw-bold">${{ object.price }}</span>
+                <span class="detail-label">Price ($):</span> <span class="text-gold fw-bold">${{ car.price }}</span>
               </p>
-
               <div class="d-grid gap-2">
-                <a href="#" class="btn btn-primary btn-sm w-100">Add to Cart</a>
+                <a href="{% url 'cart-add' car.id %}" class="btn btn-primary btn-sm w-100" data-car-id="{{ car.id }}">Add to Cart</a>
               </div>
             </div>
           </div>

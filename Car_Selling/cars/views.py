@@ -19,6 +19,7 @@ class CarsListView(ListView):
 class CarsDetailView(DetailView):
     model = Cars
     template_name = 'cars/cars_detail.html'
+    context_object_name = 'car'
 
 
 class CategoryListView(ListView):

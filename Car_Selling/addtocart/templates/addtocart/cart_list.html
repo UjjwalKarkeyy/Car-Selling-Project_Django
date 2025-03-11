@@ -1,0 +1,47 @@
+{% extends 'cars/base.html' %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'cars/cars_list.css' %}" />
+  <!-- Main Content -->
+  <div class="container mt-5">
+    <h2 class="text-center mb-4 text-primary fw-bold">Your Cart</h2>
+
+    <div class="container">
+      <div class="row">
+            {% for object in cart %}
+              {% if object.user == user %}
+            <div class="col-md-4 mb-4">
+              <div class="card shadow-lg border-0 rounded-lg overflow-hidden car-card">
+                <!-- Car Image -->
+                <img src="{{ object.car.image.url }}" class="card-img-top car-image" alt="{{ object.car.title }}" />
+
+                <!-- Card Body -->
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">{{ object.car.title }}</h5>
+                  <p class="card-text">
+                    <strong>Company:</strong> {{ object.car.company }}
+                  </p>
+                  <p class="card-text">
+                    <strong>Category:</strong> {{ object.car.category }}
+                  </p>
+                  <p class="card-text">
+                    <strong>Launch Date:</strong> {{ object.car.launch_date }}
+                  </p>
+                  <p class="card-text">
+                    <strong>Price($):</strong> <span class="text-success fw-bold">${{ object.car.price }}</span>
+                  </p>
+
+                  <div class="d-grid gap-2">
+                    <a href="{% url 'cars-detail' object.car.pk %}" class="btn btn-outline-primary btn-sm w-100">🔍 View Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+    <hr style="border: 1px solid black;" />
+  </div>
+{% endblock %}

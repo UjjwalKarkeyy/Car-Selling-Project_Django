@@ -24,6 +24,7 @@ from users.views import (logout_view,
                          profile_edit_view, UpdatedPasswordResetView,
                          UpdatedPasswordResetDoneView, UpdatedPasswordResetConfirmView,
                          UpdatedPasswordResetCompleteView)
+from addtocart.views import CarsOnCartView, add_to_cart
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,6 +38,8 @@ urlpatterns = [
     path('register/', register_view, name='register'),
     path('profile/', profile_view, name='profile'),
     path('profile/edit', profile_edit_view, name='profile-edit'),
+    path('cart/', CarsOnCartView.as_view(), name='cart'),
+    path('cart/add/<pk>/', add_to_cart, name='cart-add'),
 ]
 
 if settings.DEBUG:

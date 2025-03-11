@@ -35,7 +35,7 @@
                 </p>
 
                 <div class="d-grid gap-2">
-                  <a href="#" class="btn btn-primary btn-sm w-100">Add to Cart</a>
+                  <a href="{% url 'cart-add' car.id %}" class="btn btn-primary btn-sm w-100" data-car-id="{{ car.id }}">Add to Cart</a>
                   <a href="{% url 'cars-detail' car.pk %}" class="btn btn-outline-primary btn-sm w-100">🔍 View Details</a>
                 </div>
               </div>
